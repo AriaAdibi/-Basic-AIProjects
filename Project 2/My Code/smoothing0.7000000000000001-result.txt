@@ -1,0 +1,11 @@
+1  ['samsung', 'and', 'lg', 'say', 'they', 'don', '’', 't', 'slow', 'phone', 'with', 'older', 'batteries', 'like', 'apple']  story  0.03284965238941373  -2.07152648333598  -2.286623329416797  -3.5469427931031707  story  right
+2  ['i', 'spend', '3', 'months', 'apply', 'to', 'job', 'after', 'a', 'cod', 'bootcamp', 'here', '’', 's', 'what', 'learn']  story  -0.5222897367888804  -0.7513556347035637  -1.9614954256189137  -3.231451996611124  story  right
+3  ['why', 'people', 'believe', 'others', "'", 'social', 'live', 'be', 'richer', 'than', 'their', 'own']  story  0.13701436718710003  -1.6904132920367698  -1.9195763202655507  -2.804182009893744  story  right
+4  ['show', 'hn', 'attend/organize', 'local', 'hackernews', 'meetups']  show_hn  -1.029120478415598  -1.4436047655298716  -0.7902543061078204  -2.7232965095634474  show_hn  right
+5  ['can', 'you', 'write', 'a', 'c', 'program', 'without', 'main', 'function', '?']  story  -0.36090910711906243  -1.7817963397041319  -3.0341346770633684  -3.9476516886090764  story  right
+6  ['copy-on-write', 'friendly', 'python', 'garbage', 'collection']  story  -0.048143715729028536  -0.8479788842073184  -1.1756051874718376  -2.1276706282408946  story  right
+7  ['ask', 'hn', 'be', 'attention', 'span', 'limit', '?']  ask_hn  -1.3989453281240052  -0.4626280028433012  -2.1410559185027966  -3.0931213592718536  ask_hn  right
+8  ['ask', 'hn', 'be', 'it', 'possible', 'to', 'change', 'the', 'employer', 'before', 'join', 'in', 'berlin', '?']  ask_hn  -1.698533395776289  -1.4127325335430556  -3.4061804198267533  -4.695411205430638  ask_hn  right
+9  ['the', '25th', 'ioccc', 'be', 'open']  story  -0.45353640219052815  -1.8121434579011209  -1.7403526976536594  -3.453482793844913  story  right
+10  ['show', 'hn', 'movingcollage', '–', 'create', 'video', 'collages', 'online']  story  -0.9762181690109899  -2.0146010660788733  -1.333118242360896  -3.2468862312048477  show_hn  wrong
+11  ['ask', 'hn', 'how', 'can', 'i', 'learn', 'to', 'cook', 'for', 'myself', 'without', 'make', 'decisions', '?']  story  -1.8679258656174214  -3.0332952673756832  -4.764164050055406  -7.015374333862205  ask_hn  wrong

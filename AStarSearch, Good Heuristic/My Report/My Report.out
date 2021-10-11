@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{\040Introductions\040and\040technical\040details\040}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{\040Introduction\040}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Technical\040details}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Description,\040justification,\040and\040pros\040and\040cons\040of\040the\040heuristic\040algorithms\040}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{State\040representation}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Heuristic\040functions}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.1}{naive_heuristic}{subsection.2.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.2}{moving_towards_heuristic}{subsection.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Heuristic\040Algorithms}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Encountered\040difficulties}{}% 10

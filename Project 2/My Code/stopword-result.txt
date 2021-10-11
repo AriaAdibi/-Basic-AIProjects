@@ -1,0 +1,11 @@
+1  ['samsung', 'and', 'lg', 'say', 'they', 'don', '’', 't', 'slow', 'phone', 'with', 'older', 'batteries', 'like', 'apple']  story  0.17969977416894833  -0.9199966277612663  -1.1292799791922024  -2.127404606000883  story  right
+2  ['i', 'spend', '3', 'months', 'apply', 'to', 'job', 'after', 'a', 'cod', 'bootcamp', 'here', '’', 's', 'what', 'learn']  story  -0.10603658201208255  -1.99085248502476  -2.216949335465346  -3.7037770895435047  story  right
+3  ['why', 'people', 'believe', 'others', "'", 'social', 'live', 'be', 'richer', 'than', 'their', 'own']  story  0.08830822093577417  -1.378981140658841  -1.6387049891187258  -2.671575233576854  story  right
+4  ['show', 'hn', 'attend/organize', 'local', 'hackernews', 'meetups']  show_hn  -2.2321902415044677  -1.3400248965719288  -0.8800372332620636  -4.15237605488368  show_hn  right
+5  ['can', 'you', 'write', 'a', 'c', 'program', 'without', 'main', 'function', '?']  story  -0.41053228347712456  -1.2740944943763135  -2.996216340735153  -4.0290865851932836  story  right
+6  ['copy-on-write', 'friendly', 'python', 'garbage', 'collection']  story  0.027380518780324437  -0.6579653268678527  -0.9513161733470388  -2.0073501629047974  story  right
+7  ['ask', 'hn', 'be', 'attention', 'span', 'limit', '?']  ask_hn  -3.1084490874448023  -0.376467403085871  -3.984182783816071  -6.142578253130852  ask_hn  right
+8  ['ask', 'hn', 'be', 'it', 'possible', 'to', 'change', 'the', 'employer', 'before', 'join', 'in', 'berlin', '?']  ask_hn  -3.0475213852893526  -0.6203619621571963  -4.194450344868095  -6.329682069083246  ask_hn  right
+9  ['the', '25th', 'ioccc', 'be', 'open']  story  -0.5106684380947879  -0.89119202251619  -0.7410486122950135  -2.297367601672066  story  right
+10  ['show', 'hn', 'movingcollage', '–', 'create', 'video', 'collages', 'online']  show_hn  -2.258412715067918  -3.102433395521141  -2.131697479472314  -5.857993810713962  show_hn  right
+11  ['ask', 'hn', 'how', 'can', 'i', 'learn', 'to', 'cook', 'for', 'myself', 'without', 'make', 'decisions', '?']  ask_hn  -3.302793890392659  -1.7964532212128774  -5.370541603923776  -7.98289458285859  ask_hn  right

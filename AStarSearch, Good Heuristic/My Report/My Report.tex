@@ -1,0 +1,407 @@
+\documentclass[11pt]{article}
+
+\usepackage[bottom]{footmisc}
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+\usepackage{enumitem}
+
+\usepackage{multicol}	
+
+\usepackage{placeins}
+
+\usepackage{hyperref}
+
+\usepackage{caption}
+
+\usepackage{amsmath, amsthm}
+
+\usepackage{listings, lstautogobble}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,calc}
+
+\title{COMP 6721: Artificial Intelligence,\\Project 1 Report}
+\author{ Aria Adibi, 40139168}
+\date{}
+
+\definecolor{lightBlue}{RGB}{27, 168, 175}
+\definecolor{darkishBlue}{RGB}{27, 71, 188}
+\definecolor{darkishPurple}{RGB}{132, 14, 141}
+\colorlet{lightgray}{gray!20}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+
+\hypersetup{
+	colorlinks= true,
+	linkcolor= darkishBlue,
+%	anchorcolor= black,
+	citecolor= black,
+%	filecolor= cyan,
+%	menucolor= red,
+%	runcolor= cyan,
+	urlcolor= lightBlue,
+%	allcolors= black
+}
+
+\lstdefinestyle{mystyle}{
+	keywordstyle=\color{darkishBlue},
+	basicstyle=\small\ttfamily,
+	commentstyle=\ttfamily\itshape\color{gray},
+	stringstyle=\ttfamily\color{darkishPurple},
+	%%%%%%%%%%%%%%%%%
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=3,
+	%%%%%%%%%%%%%%%%%unknown
+	%	frameround==ffff,
+	%	breaklines=true,
+	%	breakatwhitespace=false,
+	%%%%%%%%%%%%%%%%%dose not wanted.
+	%	frame=single,
+	%	rulecolor=\color{black},
+	%	backgroundcolor=\color{backcolour},
+	%	numberstyle=\tiny\color{black},
+	%	numbers=left,                    
+	%	numbersep=5pt,
+	%	captionpos=b,                    
+	%	keepspaces=true,
+	%%%%%%%%%%%%%%%%%
+	autogobble=true
+}
+
+\lstdefinelanguage{ExSQL}{
+	language= SQL,
+	morekeywords=
+	{TYPE, ENUM, ESCAPE, length, REFERENCES, REPLACE,
+		FUNCTION, RETURNS, LANGUAGE, AFTER, FOR, EACH, ROW,
+		PROCEDURE, BEGIN, RETURN, OFFSET, CEIL, RETURNING}
+}
+
+\lstset{style=mystyle}
+
+%\renewcommand{\listfigurename}{}
+%\renewcommand{\listtablename}{}
+%\renewcommand\refname{}
+
+%\setlength{\parindent}{4em}
+\setlength{\parskip}{0.7em}
+%\renewcommand{\baselinestretch}{2.0}
+
+\newtheorem*{note}{Note}
+\newtheorem*{definition}{Definition}
+
+\begin{document}
+	\maketitle
+	
+	\pagenumbering{roman}
+	
+	\begin{abstract}
+			In this project crime rate of a rectangular geographic coordinates of the city of Montr\'eal is investigated. Then based on this investigation an optimal path must be provided for the 
+			user within a time limit of ten seconds. The purpose of the project is to familiarize students on the variety of state representation options available for a given problem and
+			for them to analyze and compare different heuristic algorithms and functions.
+	\end{abstract}
+	
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	\thispagestyle{empty}
+	\pagebreak %TODO
+	\pagenumbering{gobble}
+	
+	\tableofcontents
+%	\listoffigures
+	\listoftables
+	
+	\newpage
+	\pagenumbering{arabic}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\section{ Introductions and technical details }
+		\subsection{ Introduction }
+			Rectangular geographic coordinates of the city of Montr\'eal and the committed crime locations represented as points within said coordinates (during a certain period of time) are given. 
+			
+			The map then should be divided into grid-like neighborhoods where the distance between two adjacent neighborhoods is given by \texttt{grid\_size}, which is provided by
+			the user of the program. 
+			
+			The first goal of the program is to show some statistics about the crimes in the neighborhoods and then, given a \texttt{percentile} by the user, identify and graphically show
+			the \emph{dangerous} neighborhoods.
+			
+			Crossing an edge in this grid takes some \emph{time}. According to the problem crossing an \emph{unsafe} edge (within a dangerous neighborhood or on the boundary of two dangerous
+			neighborhoods) is forbidden. The use of outer boundary edges are also forbidden. The time cost for other edges are as follows:
+			
+			\begin{center}
+				\setlength\arrayrulewidth{0.8pt}
+				\begin{tabular}{ | l | c | }
+					\hline
+					\rowcolor{lightgray}
+					\multicolumn{2}{|c|}{\bfseries Edge crossing costs}\\
+					\hline
+					
+					\hline
+					diagonal edge (within a safe neighborhood) & $1.5$(s)\\
+					\hline
+					boundary edge between two safe neighborhoods & $1$(s)\\
+					\hline
+					boundary edge between one safe and one unsafe neighborhoods & $1.3$(s)\\
+					\hline
+				\end{tabular}
+				\captionof{table}[Costs of crossing an edge]
+				{Costs of crossing a non-forbidden edge according to the problem}
+				\label{table:edgeCosts}
+			\end{center}
+			
+			With this definition, the second goal of the program is to find a good state representation of the problem to solve for an optimal path (with a heuristic algorithm) between two
+			points given by the user (the default points are top left to bottom right.) However, the program must find such an optimal path within a time limit of \emph{ten seconds}. If an
+			optimal path is found, it too is shown graphically to the user, if not an appropriate message is given.
+			
+			The third goal of the project is to compare and analyze the pros and cons of different options available as heuristic algorithms and the heuristic functions. Moreover, it must give
+			reasons for the choice of algorithm and heuristic function chosen by the program.
+			
+		\subsection{Technical details}
+			In the provided \texttt{.zip} file you will find the following files:
+			\begin{itemize}
+				\item {\ttfamily README.txt}\\
+					This \texttt{.txt} file provides the instructions needed to run the program.
+				\item {\ttfamily main.py}\\
+					The main (runnable) python module which is to be executed.
+				\item {\ttfamily Technical Report}\\
+					This file, which reports and give analysis of the project.
+				\item {\ttfamily Expectation of Originality}\\
+					A signed form for the purpose of originality of the work.
+			\end{itemize}
+			
+			To obtain the data from \texttt{.shp} file, \texttt{geopanda} package is used.
+			
+			\begin{note}
+				Two heuristic functions, namely, \texttt{naive\_heuristic} and \texttt{moving\_towards\_heuristic} are implemented. By default, the latter is used. For changing this, one has to comment one
+				line of code and uncomment another line of code manually.
+			\end{note}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	
+	\section{Description, justification, and pros and cons of the heuristic algorithms }
+		\subsection{State representation}
+			First, the program creates a matrix where each cell corresponds to a neighborhood. The number within the cell will be the number of crimes that occurred during the specified time period. Having this matrix, one could see that the pathfinding algorithm traverse a graph similar to the one obtained by considering the matrix as the representation of that graph.
+			
+			For our algorithms to work, we somehow should create a state representation for them to work on. The above graph, along with the current position of the traveler, is one such state representation. Note that both algorithms do not utilize the entire graph in each step. Both use particular local information. Also, note that the above matrix is necessary to be created for us to have the crime information. Therefore, if we somehow just give the algorithms the local information they need with minimal computational effort, then we represented the problem with a compelling state representation.
+			
+				To this end, we use pairs of numbers as our graph vertices. With just simple index manipulation and looking locally at possible eight adjacent neighbors of a vertex, we can provide the algorithms their needed information. Accordingly, no graph is explicitly created and our representation, due to tight memory use and minimal computational effort, is a very compelling one.
+		\subsection{Heuristic functions}
+			Two heuristic functions are implemented. Both of them are \emph{consistent} (and therefore also \emph{admissible}.) Accordingly, they can be used with both \emph{tree search} and \emph{graph search} algorithms. Their description and analysis follows.
+			
+			\subsubsection{naive\_heuristic}
+				As it is apparent in the naming, this heuristic is very naive. It assumes no neighborhood is dangerous and gives the trivial answer in this case. It is easy to see that this heuristic is consistent.
+			
+			\subsubsection{moving\_towards\_heuristic}
+				This heuristic forces the traveler to get at least one step closer (with respect of x or y axis) to the goal. If, however, the travel has no such option, the blocking dangerous neighborhood restriction is relaxed, and the traveler will be given a pass. In this case, the cost of diagonal travel is considered to be 1.5, and the cost of boundary edge is considered to be 1.3. This function $h$ gives numbers to each vertex, in the following manner.
+				
+				Initial values:
+					$h( \verb|goal| )= 0$, \quad
+					$h( \verb|others| )= \infty$
+				
+				Value assignments:
+				traverse the graph so that each time a vertex is reached, all the three possible neighbors of it have already been given a number by $h$. (It is easy to see such traverse exists.) Then assign
+				$$ h( (i, j) )= \min(\ h( (i, j) ),\ h(p, q) + \verb| move cost from | (i, j) \verb| to | (p,q)\ )$$
+				for all feasible neighbor $(p, q)$.
+				
+				The $h$ function is admissible.
+				\begin{proof}
+					\begin{definition}
+						Let $h^*$ to be exact optimal cost function for the given point to the goal point. If no path exists define $h^*= \infty$.
+					\end{definition}
+					
+					Without losing the generality, assume the point in question is located at the top left of the goal.
+					
+					If no optimal path exists, then since $h^* = \infty$ and $h \ne \infty$ (due to the relaxation), $h$ is admissible. Therefore assume that there is an optimal path. Consider path $P$, suggested by function $h$, and an optimal path $P^*$. Note that, they both start at a single shared vertex and end at a single shared vertex.
+					
+					Each action by the traveler in $P$ has either right or down action in it, e.g. the diagonal action has both. Also, note that each action contains at most one left and at most one down action an no other type.
+					
+					Now, consider the first point where these two paths deviate (exists, if not they were the same) and the first point after which they join again (exists because at the end the must end up at goal). From now on, we focus on this portion of these two paths. If it is proven that $h$ is admissible within this portion (new start and new goal vertices), the proof is complete because the actual paths consist of finite multiple such portions.
+					
+					Now focusing on the portion:
+				
+					Think of diagonal actions in $P$ as one right and one down actions with weight $1.3$, but only weight wise. The new path cost is higher than before.
+					
+					Assume $P$ has $r$ right actions, and $P^*$ has $r^*$ right actions (as defined above).  Then the $l^*$ (number of left actions in $P^*$) $= r^* - r$. Similarly, define for vertical actions. The horizontal \emph{cost save} by $P^*$ occurs when a right action in $P$ with cost $1.3$ is \emph{replaced} with one in $P^*$ with cost $1$, save of $0.3$. Therefore, the total horizontal savings will not exceed $0.3 \times r$. Similarly, $0.3 \times d$ for vertical moves.
+					
+					However, the optimal path has $2 \times l^*$ additional horizontal moves, which costs at least $2 \times l^* \times 1$. Therefore, at best, the changes are:
+					
+						$$ -2l^* - 2u^* + 0.3r + 0.3d = -2r^* + 2.3r - 2d^* + 2.3d $$
+						
+					We know $r^* \ge r$ and $d^* \ge d$. If $r^* > r$ and $d^* > d$ the above expression is negative, hence function $h$ will be admissible. If not, if both equality hold then no left or up action is in the optimal path, therefore (by the relaxation of $h$) it is trivial that $h \le h^*$ hence, $h$ is admissible. If not this case either, then without the lose of generality assume $r^* > r$ and $d^* = d$.
+					
+					By induction on the number of columns (based on $r^* > r$ and the horizontal distance from goal) and the fact that $h( (i, j) )$ is chosen based on min of guaranteed admissible neighbors, one can easily deduct the above equation cannot be positive because then $h$ would have violated the min property of its neighbors.
+				\end{proof}
+				
+				
+				Similar argument but with a bit more nuance can be given to prove the consistency of $h$. However, since my search is tree search (admissibility is enough) I did not provide this argument.
+				
+				Through some small time tests, the ``better'' heuristic function showed no time improvement. But my tests were very small and few. I assume it will do much better for randomly generated grids.
+				
+		\subsection{Heuristic Algorithms}
+			Two heuristic algorithms, namely \emph{Steepest Ascent Hill Climbing} and $A^*$ is implemented. It is known to us that $A^*$ finds the optimal path but Steepest Ascent Hill Climbing might stuck in local minimal or not be able to find any path. \cite{AIBook}
+			
+			Due to small number of vertices and sparsity of the graph, $A^*$ algorithm seems to be as fast as Hill Climbing algorithm, and only slightly more memory demanding (which is negligible in this kind of problems.) My very few tests seem to confirm this.
+			
+			(Sorry, for the lack of time I cannot include the tests. If you would accept I would do it after the deadline.)
+			
+			Both algorithms are tree search. For more about this decision please refer to \textcolor{darkishBlue}{Section} \ref{sec:EncounteredDifficulties}.
+			
+	\section{Encountered difficulties} \label{sec:EncounteredDifficulties}
+		Originally, I wanted to implement the $A^*$ as graph search algorithm. Which only add 5 lines of short code to the existing one. However, much to my surprise I found that \texttt{PriorityQueue} implementation in standard python library has no \texttt{decrease\_value} function (as it should have, by definition). The reason (from what I understand) is related to handling \texttt{mutex lock} for multi threaded computations. The standard library also lacked any balanced (or similar) tree structures.
+		
+		As I did not want to use third party data structure (in addition to popular packages like \texttt{numpy}), nor did I want to implement it myself, and judiciously guessing that the speed impact is not too significant, I opt for tree search algorithm instead.
+		
+	\begin{thebibliography}{9}
+		\hypersetup{
+			urlcolor= black
+		}
+			\bibitem{AIBook}
+			Stuart Russell and Peter Norvig, Artificial Intelligence: A Modern Approach $3$rd Edition, Prentice Hall.
+	\end{thebibliography}
+
+\end{document}
+
+%		\ref{fig:DesignPhasesDB}
+
+%		\cite[p. 61]{FundDB}.
+
+%		\begin{figure}[h!]
+%			\centering
+%			\includegraphics[width= 0.85\textwidth]{./Images/mainPhasesOfTheDesign.png}
+%			\caption[name in caption] 
+%				{the caption}
+%			\label{fig:DesignPhasesDB}
+%		\end{figure}
+
+%		\footnote{conceptual modeling}
+
+
+%		\begin{itemize}
+%			\item[-]
+%			{\bfseries
+%				some item
+%			}\\
+%		\end{itemize}
+
+%\begin{enumerate}
+%	\item
+%	A
+%\end{enumerate}
+
+%\newtheorem*{remark}{Remark}
+%\begin{remark}
+%	remark
+%\end{remark}
+
+%		\newtheorem*{definition}{Definition}
+%		\begin{definition}
+%			\setlength{\leftskip}{0.9cm}
+%			A relation schema $R$ is in 
+%			{\bfseries first normal form (1NF)} if it has no multivalued
+%			or nested relations; in another words all of it's attributes
+%			are atomic.
+%		\end{definition}
+%		\begin{definition}
+%			\setlength{\leftskip}{0.9cm}
+%			A relation schema $R$ is in 
+%			{\bfseries second normal form (2NF)} if every nonprime
+%			attribute $A$ in $R$ is not partially dependent on any key
+%			of $R$.
+%		\end{definition}
+%		\begin{definition}
+%			\setlength{\leftskip}{0.9cm}
+%			A relation schema $R$ is in
+%			{\bfseries third normal form (3NF)} if, whenever a nontrivial
+%			functional dependency $X \rightarrow A$ holds in $R$, either
+%			(a) $X$ is a superkey of $R$, or (b) $A$ is a prime attribute
+%			of $R$.
+%		\end{definition}
+%		\begin{definition}
+%			\setlength{\leftskip}{0.9cm}
+%			A relation schema $R$ is in {\bfseries BCNF} if whenever 
+%			a nontrivial functional dependency $X \rightarrow A$ holds
+%			in $R$, then $X$ is a superkey of $R$.
+%		\end{definition}
+
+%\section{Section}
+%\subsection{SubSection}
+%\subsubsection{SubSubSection} \label{dataRequirmentsProj1}
+%\cite{typeTotorialsPoint}
+
+%{\bfseries \texttt{Coupon} }\\
+%\begin{tabular}{|l|l|}
+%	\hline
+%	
+%	\texttt{category:: couponCategories*} & \texttt{description:: text}\\
+%	\hline
+%	
+%	\texttt{lineaments:: text} & \texttt{companyName:: nameDomain*}\\
+%	\hline
+%	
+%	\texttt{companyAddress:: text} & \texttt{conditions:: text}\\
+%	\hline
+%	
+%	\multicolumn{2}{|l|}{ \texttt{nameAndAShortDescription:: character varying(150)} }\\
+%	\hline
+%	
+%	\texttt{numOfCoupons:: integer} & \texttt{numOfSoldCoupons:: integer}\\
+%	\hline
+%	
+%	\texttt{originalPrice:: money} & \texttt{percentageOff:: integer}\\
+%	\hline
+%	
+%	\texttt{expirationDate:: date} & \texttt{id:: serial}\\
+%	\hline
+%\end{tabular}
+%%		\captionof{}
+%%			{}
+%\label{table:typeCoupon}
+
+%\begin{center}
+%	\setlength\arrayrulewidth{0.8pt}
+%	\begin{tabular}{|l|c|}
+%		\hline
+%		\rowcolor{lightgray}
+%		\multicolumn{1}{|c|}{\bfseries Limit} & 
+%		{\bfseries Value}\\
+%		\hline
+%		Maximum Database & unlimited\\
+%		\hline
+%		Maximum Table Size & 32 terabyte\\
+%		\hline
+%		Maximum Row Size & 1.6 terabyte\\
+%		\hline
+%		Maximum Rows per Table & unlimited\\
+%		\hline
+%		Maximum Columns per Table & 1600-2500 depending on column types\\
+%		\hline
+%		Maximum Indexes per Table & unlimited\\
+%		\hline
+%	\end{tabular}
+%	\captionof{table}[]
+%	{}
+%	\label{table:limitationsOfPostgrSQL}
+%\end{center}
+
+%\begin{lstlisting}[language= ExSQL]
+%CREATE TYPE "couponCategories" AS ENUM
+%('RESTAURANT_COFFEESHOP',
+%'ART_THEATER',
+%'ENTERTAINMENT_SPORT',
+%'EDUCATIONAL',
+%'HEALTH_MED',
+%'COSMETIC',
+%'TRAVEL',
+%'GOODS');
+%\end{lstlisting}
+
+%\begin{figure}[h!]
+%	\centering
+%	\begin{tikzpicture}[relation/.style={rectangle split, rectangle split parts=#1, rectangle split part align=base, draw, anchor=center, align=center, text height=2mm, text centered}]
+%	\end{tikzpicture}
+%	\caption[NAME IN TABLE]
+%	{}
+%	\label{fig:FDRProj1}
+%\end{figure}
