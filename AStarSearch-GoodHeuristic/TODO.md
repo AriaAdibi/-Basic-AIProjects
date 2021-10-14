@@ -1,0 +1,3 @@
+- check the correctness of the steepest_ascent_hill_climbing
+- provide an interactive interface for user to choose the algorithm and to choose the heuristics
+- Either delete my report and incorporate it in the readme (especially the description of the moving_towards_heuristic) or correct it (abstract) and complete it.
