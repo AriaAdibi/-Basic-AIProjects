@@ -28,8 +28,7 @@ Crossing an edge in this grid takes some time. According to the problem crossing
 
 Upon existence, using a heuristic search the program should find the optimal path for the given start and end coordinate (which should be a corner of a grid.) within 10 seconds time limit. If no such path exists or time limit is reached the program will report this. The result will be graphically depicted. Two examples are the followings, in the first (grid size: 0.002, threshold: 50) no such path exists (and reported) and in the second (grid size: 0.002, threshold: 70) the path is drawn.
 
-![NoPath50](./AStarSearch-GoodHeuristic/Overview/Images/NoPath50.png)
-![Path70](./AStarSearch-GoodHeuristic/Overview/Images/Path70.png)
+![NoPath50](./AStarSearch-GoodHeuristic/Overview/Images/NoPath50.png) ![Path70](./AStarSearch-GoodHeuristic/Overview/Images/Path70.png)
 
 Two algorithms
 1. A* search
