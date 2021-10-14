@@ -2,7 +2,7 @@ from debug_printer import * # TODO
 
 # ------------------------------------------------------------------------------
 # Project 1
-# Written by Aria Adibi, Student id: 40139168
+# Written by Aria Adibi, Student id: ****
 # For COMP 6721 Section F – Fall 2019
 # ------------------------------------------------------------------------------
 
@@ -10,8 +10,7 @@ from debug_printer import * # TODO
 # Y= [45.495, 45.515, 45.528]
 '''
 IMPORTANT:  Ambiguity in the project description.
-            My Assumption: all the numbers equal to the percentile (i.e. threshold) are considered "safe."
-            Note: any other posible case neither increases or decreases the code difficulty.
+            My Assumption: all numbers equal to the percentile (i.e. threshold) are considered "safe."
 
             The "grid residual" is considered at the top and right.
 '''
@@ -31,7 +30,7 @@ import matplotlib.ticker as ticker
 COUNT_D_TYPE= np.uint64
 ROUND_N_DIGITS= 8
 EPS= 10 ** (-ROUND_N_DIGITS)
-ROUND_N_SHOW_DIGIT= 4
+ROUND_N_SHOWN_DIGITS= 4
 TIME_LIMIT= 10 #in seconds
 
 #Global variables given by the problem instance
@@ -392,8 +391,8 @@ if (__name__ == '__main__'):
 
     print( '\nCrime Statistics:' )
     print( '\tTotal number: {}'.format( np.sum(crime_count) ) )
-    print( '\tMean: {}'.format( round( np.mean(crime_count), ROUND_N_SHOW_DIGIT ) ) )
-    print( '\tStandard Deviation: {}'.format( round( np.std(crime_count), ROUND_N_SHOW_DIGIT ) ) )
+    print( '\tMean: {}'.format( round( np.mean(crime_count), ROUND_N_SHOWN_DIGITS ) ) )
+    print( '\tStandard Deviation: {}'.format( round( np.std(crime_count), ROUND_N_SHOWN_DIGITS ) ) )
 
     #IMPORTANT: Ambiguity in the project description.
     #           My Assumption: all the numbers equal to the percentile (i.e. threshold) are considered "safe"
