@@ -103,7 +103,8 @@ The results can be found in the same directory where the code resides.
 
 A short incomplete visual view is:
 
-<p float="left">
+<p align="center">
     <img src="./NLP-NaiveBayse/Overview/Images/1.png" width="400"/>
+    
     <img src="./NLP-NaiveBayse/Overview/Images/2.png" width="250"/>
 </p>
