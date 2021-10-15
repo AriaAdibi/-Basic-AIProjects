@@ -105,7 +105,7 @@ The results can be found in the same directory where the code resides.
 A short incomplete visual view is:
 
 <p align="center">
-    <img src="./NLP-NaiveBayse/Overview/Images/1.png" width="550"/>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="./NLP-NaiveBayse/Overview/Images/2.png?" width="350"/>
+    <img src="./NLP-NaiveBayse/Overview/Images/1.png" width="500"/>
+    &nbsp;&nbsp;
+    <img src="./NLP-NaiveBayse/Overview/Images/2.png?" width="300"/>
 </p>
