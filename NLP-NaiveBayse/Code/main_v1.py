@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------
 # Project 2
-# Written by Aria Adibi, Student id: 40139168
+# Written by Aria Adibi, Student id: ****
 # For COMP 6721 Section F – Fall 2019
 # ------------------------------------------------------------------------------
 import os
@@ -17,6 +17,8 @@ import matplotlib.ticker as ticker
 import math
 
 import nltk
+nltk.download('punkt')
+nltk.download('wordnet')
 import nltk.tokenize
 import nltk.stem
 import nltk.corpus

@@ -1,0 +1,2 @@
+- Complete the code
+- merge the documents and the README file.
