@@ -31,11 +31,11 @@ Crossing an edge in this grid takes some time. According to the problem crossing
 Upon existence, using a heuristic search the program should find the optimal path for the given start and end coordinate (which should be a corner of a grid.) within 10 seconds time limit. If no such path exists or time limit is reached the program will report this. The result will be graphically depicted. Two examples are the followings, in the first (grid size: 0.002, threshold: 50) no such path exists (and reported) and in the second (grid size: 0.002, threshold: 60) the path is drawn.
 
 <p align="center">
-    <img src="./AStarSearch-GoodHeuristic/Overview/Images/NoPath50.png" width="400"/>
+    <img src="./AStarSearch-GoodHeuristic/Overview/Images/NoPath50.png" width="550"/>
 </p>
 
 <p align="center">
-    <img src="./AStarSearch-GoodHeuristic/Overview/Images/Path60.png" width="400"/>
+    <img src="./AStarSearch-GoodHeuristic/Overview/Images/Path60.png" width="550"/>
 </p>
 
 Two algorithms
@@ -93,9 +93,10 @@ The smoothing function used is **Additive Smoothing**, also called *Laplace smoo
 
 **Bayes Theorem:** Let {B_1, B_2, . . . , B_n} be a partition of the sample space S of the experiment. If for i = 1, 2, ..., n, P(B_i) > 0, then for any event A of S with P (A) > 0,
 
-<img src="./NLP-NaiveBayse/Overview/Images/BayesFormula.png" width="250"/>
+<p align="center">
+    <img src="./NLP-NaiveBayse/Overview/Images/BayesFormula.png" width="300"/>
+</p>
 
-\
 Assuming the “Naive” assumption that the features (here words of a given title) of the model are independent, and the fact that our classes (here Post Types) partition our sample space one can use Bayes theorem to calculate the probability of a title belonging to each class. The higher one will be the  predicted value of the algorithm.
 
 #### Results
@@ -104,7 +105,7 @@ The results can be found in the same directory where the code resides.
 A short incomplete visual view is:
 
 <p align="center">
-    <img src="./NLP-NaiveBayse/Overview/Images/1.png" width="400"/>
-    
-    <img src="./NLP-NaiveBayse/Overview/Images/2.png" width="250"/>
+    <img src="./NLP-NaiveBayse/Overview/Images/1.png" width="600"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="./NLP-NaiveBayse/Overview/Images/2.png?" width="450"/>
 </p>
