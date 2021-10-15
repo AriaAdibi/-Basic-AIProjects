@@ -23,7 +23,7 @@ Then based on this investigation an optimal path must be provided for the user w
 Crossing an edge in this grid takes some time. According to the problem crossing an unsafe edge (within a dangerous neighborhood or on the boundary of two dangerous neighborhoods) is forbidden. The use of outer boundary edges are also forbidden. The time cost for other edges are as follows:
 
 | Edge crossing costs | |
-| ------ | - |
+| :---- | :---- |
 | diagonal edge (within a safe neighborhood) | 1.5(s) |
 | boundary edge between two safe neighborhoods | 1(s) |
 | boundary edge between one safe and one unsafe neighborhoods | 1.3(s) |
@@ -91,10 +91,10 @@ The smoothing function used is **Additive Smoothing**, also called *Laplace smoo
 
 #### Naive Bayes Model
 
-**Bayes Theorem:** Let {B_1, B_2, . . . , B_n} be a partition of the sample space S of the experiment. If for i = 1, 2, ..., n, P(B_i) > 0, then for any event A of S with P (A) > 0,
+**Bayes Theorem:** Let {B_1, B_2, . . . , B_n} be a partition of the sample space S of the experiment. If for i = 1, 2, ..., n, P(B_i) > 0, then for any event A of S with P(A) > 0,
 
 <p align="center">
-    <img src="./NLP-NaiveBayse/Overview/Images/BayesFormula.png" width="300"/>
+    <img src="./NLP-NaiveBayse/Overview/Images/BayesFormula_Blue.png" width="300"/>
 </p>
 
 Assuming the “Naive” assumption that the features (here words of a given title) of the model are independent, and the fact that our classes (here Post Types) partition our sample space one can use Bayes theorem to calculate the probability of a title belonging to each class. The higher one will be the  predicted value of the algorithm.
@@ -105,7 +105,7 @@ The results can be found in the same directory where the code resides.
 A short incomplete visual view is:
 
 <p align="center">
-    <img src="./NLP-NaiveBayse/Overview/Images/1.png" width="600"/>
+    <img src="./NLP-NaiveBayse/Overview/Images/1.png" width="550"/>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="./NLP-NaiveBayse/Overview/Images/2.png?" width="450"/>
+    <img src="./NLP-NaiveBayse/Overview/Images/2.png?" width="350"/>
 </p>
